@@ -3,7 +3,7 @@ let b=[];
 let n,w;
 
 function setup(){
-  n=20;
+  n=10;
   createCanvas(1100,1100,WEBGL);
   w=950/n;
   for(let j=0;j<n;j++){
