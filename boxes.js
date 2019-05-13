@@ -1,9 +1,13 @@
 let b=[];
 
 let n,w;
+// let q,e,r;
 
 function setup(){
   n=30;
+  // q=createSlider(-400,400,10);
+  // e=createSlider(-400,400,10);
+  // r=createSlider(-600,400,10);
   createCanvas(1100,1100,WEBGL);
   w=950/n;
   for(let j=0;j<n;j++){
@@ -38,8 +42,12 @@ function draw(){
   // pop();
 
   rotateX(PI);
-  rotateX(-PI/6)
+  rotateX(-PI/4)
   translate(-490,-200,-100);
+
+  // uncomment below for directional lighting and also uncomment the sliders q,e,r from setup
+  //directionalLight(255,0,0,q.value(),e.value(),r.value())
+
   for(let i=0;i<n;i++){
     for(let m=0;m<n;m++){
       b[i][m].show();
@@ -78,7 +86,7 @@ class boxes{
   show(){
     push();
     strokeWeight(1);
-    fill(205,500);
+
     stroke(0);
     translate(this.x,this.y,this.z);
     box(this.side,this.height,this.side);
