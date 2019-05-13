@@ -3,13 +3,13 @@ let b=[];
 let n,w;
 
 function setup(){
-  n=5;
+  n=7;
   createCanvas(800,800,WEBGL);
-  w=300/5;
+  w=410/n;
   for(let j=0;j<n;j++){
     b[j]=[];
     for(let k=0;k<n;k++){
-      b[j][k]= new boxes(w*(j+1),100,w*(k+1),100,w-5,0.001*k);
+      b[j][k]= new boxes(w*(j+1),100,w*(k+1),100,w-5,j,k);
     }
   }
 
@@ -38,7 +38,7 @@ function draw(){
 
   rotateX(PI);
   rotateX(-PI/6)
-  translate(-100,-200,-100);
+  translate(-200,-200,-100);
   for(let i=0;i<n;i++){
     for(let m=0;m<n;m++){
       b[i][m].show();
@@ -52,20 +52,24 @@ function draw(){
 
 class boxes{
 
-  constructor(x,y,z,height,side,offset){
+  constructor(x,y,z,height,side,px,py){
     this.x=x;
     this.y=y;
     this.z=z;
     this.side=side;
     this.height=height;
-    this.angle=0;
-    this.offset=offset;
-  }
+    this.angle= map((px-3)*0.1+(py-3)*0.1,0,0.6,-1.5,1.5); // change the values by which you multiply px and py to change the wave type
+
+    // useless code>>>>
+    //this.offset=(px-3)*0.01 + (py-3)*0.01;
+    // this.px=px-2;
+    // this.py=px-2;
+}
 
   show(){
     push();
     strokeWeight(3);
-    fill(0,150,0);
+    fill(95, 151, 239);
     stroke(0);
     translate(this.x,this.y,this.z);
     box(this.side,this.height,this.side);
@@ -73,8 +77,7 @@ class boxes{
   }
 
   update(){
-    this.angle+=0.05;
-    this.angle+=this.offset;
+   this.angle+=0.05;
   }
 
   wave(){
