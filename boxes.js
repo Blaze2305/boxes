@@ -3,9 +3,9 @@ let b=[];
 let n,w;
 
 function setup(){
-  n=7;
-  createCanvas(800,800,WEBGL);
-  w=410/n;
+  n=20;
+  createCanvas(1100,1100,WEBGL);
+  w=950/n;
   for(let j=0;j<n;j++){
     b[j]=[];
     for(let k=0;k<n;k++){
@@ -21,24 +21,25 @@ function draw(){
 
 
   background(0);
-  //gives the axes at the top left for refrence W=x;R=y;G=z
-  push();
-  box(100);
-  translate(-300,-100,-100);
-  rotateX(PI);
-  stroke(255);
-  background(0);
-  strokeWeight(4);
-  line(0,0,0,100,0,0);
-  stroke(0,255,0);
-  line(0,0,0,0,0,100);
-  stroke(255,0,0);
-  line(0,0,0,0,100,0);
-  pop();
+
+  //below code gives the axes at the top left for refrence W=x;R=y;G=z
+  // push();
+  // box(100);
+  // translate(-300,-100,-100);
+  // rotateX(PI);
+  // stroke(255);
+  // background(0);
+  // strokeWeight(4);
+  // line(0,0,0,100,0,0);
+  // stroke(0,255,0);
+  // line(0,0,0,0,0,100);
+  // stroke(255,0,0);
+  // line(0,0,0,0,100,0);
+  // pop();
 
   rotateX(PI);
   rotateX(-PI/6)
-  translate(-200,-200,-100);
+  translate(-540,-200,-100);
   for(let i=0;i<n;i++){
     for(let m=0;m<n;m++){
       b[i][m].show();
@@ -58,7 +59,15 @@ class boxes{
     this.z=z;
     this.side=side;
     this.height=height;
-    this.angle= map((px-3)*0.1+(py-3)*0.1,0,0.6,-1.5,1.5); // change the values by which you multiply px and py to change the wave type
+    this.px=map(px,0,n-1,-3,3);
+    this.py=map(py,0,n-1,-3,3);
+    //uncomment for ocean like wave
+    this.angle=this.px*0.1+this.py*0.25;         // change the values by which you multiply px and py to change the wave type
+
+     // uncomment for wave from center out
+     //this.angle=-(abs(this.px)+abs(this.py))/5
+
+
 
     // useless code>>>>
     //this.offset=(px-3)*0.01 + (py-3)*0.01;
@@ -81,7 +90,7 @@ class boxes{
   }
 
   wave(){
-    let b = map(sin(this.angle),-1,1,50,300);
+    let b = map(sin(this.angle),-1,1,30,400);
     this.height=b;
   }
 
