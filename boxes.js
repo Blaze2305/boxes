@@ -4,7 +4,7 @@ let n,w;
 // let q,e,r;
 
 function setup(){
-  n=30;
+  n=20;
   // q=createSlider(-400,400,10);
   // e=createSlider(-400,400,10);
   // r=createSlider(-600,400,10);
