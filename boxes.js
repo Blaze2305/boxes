@@ -3,6 +3,8 @@ let b=[];
 let n,w;
 // let q,e,r;
 
+// init function setup
+
 function setup(){
   n=20;
   // q=createSlider(-400,400,10);
